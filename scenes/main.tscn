@@ -1,7 +1,123 @@
 [gd_scene format=3 uid="uid://ccwyccp6s4hfu"]
 
-[ext_resource type="Texture2D" uid="uid://chnhokxu0ls22" path="res://icon.svg" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://883gy6617ka2" path="res://scenes/main.gd" id="1_0wfyh"]
+[ext_resource type="Theme" uid="uid://43rghjmwrf8y" path="res://scenes/maintheme.tres" id="1_o5qli"]
 
-[node name="Icon" type="Sprite2D" unique_id=1742994694]
-position = Vector2(1062, 783)
-texture = ExtResource("1_o5qli")
+[node name="Control" type="Control" unique_id=730433557]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_0wfyh")
+
+[node name="color bg" type="ColorRect" parent="." unique_id=1821341256]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -70.0
+offset_top = -41.0
+offset_right = 1952.0
+offset_bottom = 1111.0
+color = Color(0, 1, 0, 1)
+
+[node name="Panel" type="Panel" parent="." unique_id=1661692506]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 80.0
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel" unique_id=1653569841]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 80.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/CenterContainer" unique_id=27567676]
+layout_mode = 2
+
+[node name="correct" type="Label" parent="Panel/CenterContainer/HBoxContainer" unique_id=1509636720]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "correct: 000"
+
+[node name="VSeparator" type="VSeparator" parent="Panel/CenterContainer/HBoxContainer" unique_id=1872864735]
+layout_mode = 2
+theme_override_constants/separation = 200
+
+[node name="wrong" type="Label" parent="Panel/CenterContainer/HBoxContainer" unique_id=736924312]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "wrong: 000"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1387890617]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer" unique_id=850782233]
+custom_minimum_size = Vector2(0, 900)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CenterContainer" unique_id=1021590495]
+layout_mode = 2
+alignment = 1
+
+[node name="top" type="Label" parent="VBoxContainer/CenterContainer/VBoxContainer" unique_id=1487805908]
+layout_mode = 2
+theme = ExtResource("1_o5qli")
+text = "09"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/CenterContainer/VBoxContainer" unique_id=476560085]
+layout_mode = 2
+
+[node name="label" type="Label" parent="VBoxContainer/CenterContainer/VBoxContainer/HSeparator" unique_id=511744737]
+layout_mode = 0
+offset_left = -75.0
+offset_top = -103.0
+offset_right = -4.0
+offset_bottom = 72.0
+theme = ExtResource("1_o5qli")
+text = "x"
+
+[node name="botttom" type="Label" parent="VBoxContainer/CenterContainer/VBoxContainer" unique_id=576754108]
+layout_mode = 2
+theme = ExtResource("1_o5qli")
+text = "01"
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer" unique_id=729796881]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 64
+placeholder_text = "type"
+max_length = 4
+keep_editing_on_text_submit = true
+
+[node name="Label" type="Label" parent="VBoxContainer/LineEdit" unique_id=1461153003]
+layout_mode = 0
+offset_left = -786.0
+offset_top = 107.0
+offset_right = -379.0
+offset_bottom = 156.0
+text = "Remember when typing out number don't add a zero before it.
+ This will result in getting the wrong answer"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=682441882]
+anchor_mode = 0
+
+[node name="correction" type="Panel" parent="." unique_id=1446018414]
+visible = false
+layout_mode = 0
+offset_left = 1274.0
+offset_top = 320.0
+offset_right = 1571.0
+offset_bottom = 360.0
+
+[node name="Label" type="Label" parent="correction" unique_id=654039450]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 4.0
+offset_right = 248.0
+offset_bottom = 27.0
+text = "correct answer for 00 * 00 was:"
+
+[connection signal="text_changed" from="VBoxContainer/LineEdit" to="." method="_on_line_edit_text_changed"]
